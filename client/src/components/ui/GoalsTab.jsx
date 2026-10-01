@@ -26,7 +26,7 @@ const GoalsTab = ({ goals, setGoals }) => {
     };
 
     try {
-      const res = await axios.post('http://localhost:5000/api/goals', newGoalPayload, getConfig());
+      const res = await axios.post('https://tracker-website-4t7p.onrender.com/api/goals', newGoalPayload, getConfig());
       setGoals([res.data, ...goals]);
       setNewGoalTitle('');
     } catch (err) {
@@ -38,7 +38,7 @@ const GoalsTab = ({ goals, setGoals }) => {
   // Remove a goal
   const handleRemoveGoal = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/goals/${id}`, getConfig());
+      await axios.delete(`https://tracker-website-4t7p.onrender.com/api/goals/${id}`, getConfig());
       setGoals(goals.filter(goal => goal._id !== id));
     } catch (err) {
       console.error(err);
@@ -65,7 +65,7 @@ const GoalsTab = ({ goals, setGoals }) => {
 
     // Backend sync
     try {
-      await axios.put(`http://localhost:5000/api/goals/${goalId}`, {
+      await axios.put(`https://tracker-website-4t7p.onrender.com/api/goals/${goalId}`, {
         tasks: updatedTasks,
         progress: newProgress
       }, getConfig());

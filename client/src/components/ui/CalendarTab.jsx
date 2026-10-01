@@ -20,7 +20,7 @@ const CalendarTab = () => {
     const fetchEntries = async () => {
       try {
         const config = { headers: { 'x-auth-token': localStorage.getItem('token') } };
-        const res = await axios.get('http://localhost:5000/api/journal', config);
+        const res = await axios.get('https://tracker-website-4t7p.onrender.com/api/journal', config);
         
         // Convert array to object map { 'YYYY-MM-DD': entryObject }
         const entriesMap = {};
@@ -45,7 +45,7 @@ const CalendarTab = () => {
     setIsSaving(true);
     try {
       const config = { headers: { 'x-auth-token': localStorage.getItem('token') } };
-      const res = await axios.post('http://localhost:5000/api/journal', {
+      const res = await axios.post('https://tracker-website-4t7p.onrender.com/api/journal', {
         date: selectedDate,
         content: noteContent
       }, config);

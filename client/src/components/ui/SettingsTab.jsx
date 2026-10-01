@@ -27,7 +27,7 @@ const SettingsTab = ({ user, setUser }) => {
       newStartDate.setDate(newStartDate.getDate() - (dayOverride - 1)); // if they want Day 1 today, we subtract 0 days
       
       const config = { headers: { 'x-auth-token': localStorage.getItem('token') } };
-      const res = await axios.put('http://localhost:5000/api/auth/settings', {
+      const res = await axios.put('https://tracker-website-4t7p.onrender.com/api/auth/settings', {
         name,
         winterArcStart: newStartDate.toISOString(),
         winterArcLength: totalDays

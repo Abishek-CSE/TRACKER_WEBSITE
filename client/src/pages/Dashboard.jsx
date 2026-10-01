@@ -69,9 +69,9 @@ const Dashboard = () => {
 
     const fetchData = async () => {
       try {
-        const userRes = await axios.get('http://localhost:5000/api/auth/me', config);
-        const goalsRes = await axios.get('http://localhost:5000/api/goals', config);
-        const journalRes = await axios.get('http://localhost:5000/api/journal', config);
+        const userRes = await axios.get('https://tracker-website-4t7p.onrender.com/api/auth/me', config);
+        const goalsRes = await axios.get('https://tracker-website-4t7p.onrender.com/api/goals', config);
+        const journalRes = await axios.get('https://tracker-website-4t7p.onrender.com/api/journal', config);
         
         setUser(userRes.data);
         setGoals(goalsRes.data);
@@ -141,7 +141,7 @@ const Dashboard = () => {
     if (!newGoalTitle.trim()) return;
     try {
       const config = { headers: { 'x-auth-token': localStorage.getItem('token') } };
-      const res = await axios.post('http://localhost:5000/api/goals', {
+      const res = await axios.post('https://tracker-website-4t7p.onrender.com/api/goals', {
         title: newGoalTitle,
         description: '',
         deadline: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString(),
@@ -158,7 +158,7 @@ const Dashboard = () => {
   const handleRemoveGoal = async (id) => {
     try {
       const config = { headers: { 'x-auth-token': localStorage.getItem('token') } };
-      await axios.delete(`http://localhost:5000/api/goals/${id}`, config);
+      await axios.delete(`https://tracker-website-4t7p.onrender.com/api/goals/${id}`, config);
       setGoals(goals.filter(goal => goal._id !== id));
     } catch (err) {
       console.error(err);
